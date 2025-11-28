@@ -2,31 +2,57 @@
 
 #include "global.h"
 #include "game_info.h"
+#include "Controller.h"
+#include "Viewer.h"
 
 Arduboy2 arduboy;
-GameInfo game;
-
+GameClass game;
+Controller joystick;
+Viewer monitor;
+//int loopstep = 0;
 void create_maze(int cols, int rows);
 
 void setup() {
     arduboy.begin();
+    arduboy.setFrameRate(60);
     arduboy.clear(); // Очистка экрана
-    game.init();
+    joystick.init();
+    game.init(&joystick);
+    monitor.init(&game);
+    //arduboy.print("setup done\n");
+    //arduboy.display();
+    //waitForButtonPress();
 }
 
 void loop() {
-// Если не обновлять экран постоянно, то прямоугольник будет мигать.
-// Вместо этого, обычно рисуют в цикле, но только если экран готов к обновлению.
-if (!arduboy.nextFrame())
- arduboy.clear(); // Очищаем буфер экрана
+    if (!(arduboy.nextFrame()))
+    return;
+  
+    
 
- // Рисуем прямоугольник
- arduboy.drawRect(0, 0, 128, 64, WHITE);
- arduboy.drawRect(0, 0, X_SIZE, Y_SIZE, WHITE);
- 
+     if (game.state == GameClass::gamestate::START_STAGE)   arduboy.print("START_STAGE");
+
+     if (game.state == GameClass::gamestate::INTRO_STAGE)   arduboy.print("INTRO_STAGE");
+     
+     if (game.state == GameClass::gamestate::CONTROLLER_STAGE)   arduboy.print("CONTROLLER_STAGE");
+     if (game.state == GameClass::gamestate::GAME_STAGE)   arduboy.print("GAME_STAGE");
+     if (game.state == GameClass::gamestate::END_STAGE)   arduboy.print("END_STAGE");
+     arduboy.display();    
+     waitForButtonPress();
+
+
+    joystick.get_action();
+    game.action();
+
+    arduboy.clear();
+    arduboy.display(); // Выводим буфер на экран
+    //waitForButtonPress();
+    //loopstep++;
+   
+}
+
+ //arduboy.drawRect(0, 0, 128, 64, WHITE);
+ //arduboy.drawRect(0, 0, X_SIZE, Y_SIZE, WHITE);
  //create_maze(COLCOUNT, ROWCOUNT);
-
  //draw_maze();
  //game.draw();
- arduboy.display(); // Выводим буфер на экран
-}
