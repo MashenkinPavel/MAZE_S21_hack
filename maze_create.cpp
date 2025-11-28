@@ -1,73 +1,48 @@
+#include "global.h"
+#include  <Stack.h>
 
-class PrimMaze;
+void initializeMaze();
 
-void create_maze(int cols, int rows){
-    PrimMaze generator(cols, rows);
-    generator.generate();
-}
+namespace{
+    const int MAX_STACK_SIZE = 100; //for max elems 7*14      
+} 
 
+class Maze{
+    public:
 
-#include <vector>
-#include <queue>
-
-class MAZE_vector(int elementSize, int size){
-       
     private:
 
-}
-
-
-class PrimMaze {
-private:
-    int width, height;
-    bool walls[COLCOUNT][RWOCOUNT] {1};
-    //std::vector<std::vector<bool>> walls;
-
-    struct Frontier {
-        int x, y, fromX, fromY;
-        Frontier(int x, int y, int fx, int fy) : x(x), y(y), fromX(fx), fromY(fy) {}
-    };
-
-public:
-    PrimMaze(int w, int h) : width(w), height(h) {
-        //walls.resize(height, std::vector<bool>(width, true));
-    }
-
-    void generate(int startX = 1, int startY = 1) {
-        std::vector<Frontier> frontiers;
-        
-        walls[startY][startX] = false;
-        addFrontiers(startX, startY, frontiers);
-
-        while (!frontiers.empty()) {
-            int idx = rand() % frontiers.size();
-            Frontier f = frontiers[idx];
-            frontiers.erase(frontiers.begin() + idx);
-
-            if (walls[f.y][f.x]) {
-                walls[f.y][f.x] = false;
-                walls[(f.y + f.fromY) / 2][(f.x + f.fromX) / 2] = false;
-                addFrontiers(f.x, f.y, frontiers);
-            }
-        }
-    }
-
-private:
-    void addFrontiers(int x, int y, std::vector<Frontier>& frontiers) {
-        int directions[4][2] = {{0, -2}, {0, 2}, {-2, 0}, {2, 0}};
-        
-        for (auto [dx, dy] : directions) {
-            int nx = x + dx, ny = y + dy;
-            if (nx > 0 && nx < width-1 && ny > 0 && ny < height-1 && 
-                walls[ny][nx]) {
-                frontiers.push_back(Frontier(nx, ny, x, y));
-            }
-        }
-    }
 };
 
+struct Cell{
+         int x = -1;
+         int y = -1;
+};
+  
+// struct Stack{
+//     struct Cell{
+//         int x = -1;
+//         int y = -1;
+//     };  
+//     Cell position[MAX_STACK_SIZE]{-1, -1};
+//     int top = -1;
+//     bool isStackEmpty(){
+//         return (-1 == top);
+//     }
+//     //push()
+// };
 
-void draw_maze(){
+
+void generateMaze(int startX, int startY )
+{
+    bool visited[ROWCOUNT][COLCOUNT]{false}; // i j   - - columns
+    char maze_walls[COLCOUNT*2][ROWCOUNT*2];
+    StackT<Cell> localstack;
+    const int direction_x[4] = {0, 1, 0, -1}; // up  right down left
+    const int direction_y[4] = {-1, 0, 1, 0};
+    localstack.push(startY, startX);
+    visited[startY][startX] = true;
+    
 
 
 }

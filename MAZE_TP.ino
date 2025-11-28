@@ -9,13 +9,10 @@ GameInfo game;
 void create_maze(int cols, int rows);
 
 void setup() {
-arduboy.begin();
-arduboy.clear(); // Очистка экрана
-game.init();
+    arduboy.begin();
+    arduboy.clear(); // Очистка экрана
+    game.init();
 }
-
-
-
 
 void loop() {
 // Если не обновлять экран постоянно, то прямоугольник будет мигать.
@@ -23,26 +20,13 @@ void loop() {
 if (!arduboy.nextFrame())
  arduboy.clear(); // Очищаем буфер экрана
 
-
-
- for (int Level = 0; i<LEVELCOUNT; i++){
-    
- }
-
-
- 
- 
  // Рисуем прямоугольник
  arduboy.drawRect(0, 0, 128, 64, WHITE);
  arduboy.drawRect(0, 0, X_SIZE, Y_SIZE, WHITE);
- create_maze(COLCOUNT, ROWCOUNT);
+ 
+ //create_maze(COLCOUNT, ROWCOUNT);
 
-
-
-
- draw_maze();
-
-
-
+ //draw_maze();
+ //game.draw();
  arduboy.display(); // Выводим буфер на экран
 }
