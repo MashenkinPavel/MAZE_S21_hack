@@ -72,7 +72,7 @@ void Viewer::ViewMaze(){
                 int Xend  =  xFace * X_SIZE; 
                 int Ystart = row * Y_SIZE;
                 int Yend =   row * Y_SIZE + Y_SIZE;
-                 arduboy.drawLine(Xstart, Ystart, Xend, Yend, WHITE);
+                arduboy.drawLine(Xstart, Ystart, Xend, Yend, WHITE);
             }
         }
     }
