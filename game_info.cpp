@@ -20,7 +20,7 @@ void GameClass::action(){
             if (pt_joystick->exec() == Controller::action::PRESS_A){
                 state = gamestate::INTRO_STAGE;
                 pt_viewer->update();
-                pt_audio->playTitleMusic();
+                //pt_audio->playTitleMusic();
             }
             else {
               state = gamestate::START_STAGE;
