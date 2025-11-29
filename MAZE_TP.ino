@@ -3,12 +3,14 @@
 #include "game_info.h"
 #include "Controller.h"
 #include "Viewer.h"
+#include "Sounds.h"
 
 //ArduboyTinyFont tinyfont = ArduboyTinyFont(arduboy.sBuffer);
 Arduboy2 arduboy;
 GameClass game;
 Controller joystick;
 Viewer monitor;
+SoundManager audioFX;
 
 
 //int loopstep = 0;
@@ -19,9 +21,11 @@ void setup() {
     arduboy.setFrameRate(60);
     arduboy.clear(); // Очистка экрана
     joystick.init();
-    game.init(&joystick);
+    audioFX.init(&arduboy);
+    game.init(&joystick, &audioFX);
     monitor.init(&game);
     game.addViewer(&monitor);
+   
     
     
 
