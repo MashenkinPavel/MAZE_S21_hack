@@ -10,6 +10,7 @@ GameClass game;
 Controller joystick;
 Viewer monitor;
 
+
 //int loopstep = 0;
 void create_maze(int cols, int rows);
 

@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "USBCore.h"
 #include <Arduboy2.h>
 #include "Viewer.h"
@@ -61,7 +62,9 @@ void Viewer::ViewStartScreen() {
 }
 
 void Viewer::ViewIntroScreen() {
-  arduboy.print("Intro");
+  arduboy.print("intro");
+  // arduboy.setCursor(42, 18);
+  // arduboy.println((int)(millis() * 0.001));
 }
 
 void Viewer::ViewControlsScreen() {

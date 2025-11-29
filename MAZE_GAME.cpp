@@ -3,7 +3,9 @@
 #include <Stack.h>
 #include "MAZE_GAME.h"
 #include <stdio.h>
+#include <Arduboy2.h>
 
+extern Arduboy2 arduboy;
 
 bool Maze::isValidCell(int x, int y) {
   if ((x < 0) || (x >= COLCOUNT)) return false;
@@ -111,8 +113,14 @@ void Maze::generateMaze(int startX, int startY) {
 
 void MAZE_GAME::InitGame() {
   //init maze1
+  // start timer
+  start_time = millis();
   maze1.init();
   maze1.generateMaze(0, 0);
   player1.pos_X = START_POS_X;
   player1.pos_Y = START_POS_Y;
 }
+
+
+
+

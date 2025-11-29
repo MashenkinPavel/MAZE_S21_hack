@@ -7,7 +7,7 @@
 #include "Controller.h"
 
 
-class Maze{
+class Maze {
     public:
         bool IsWallX(int nx, int ny){   //dir == 1  right wall    dir == -1   left wall
             return maze_wallsX[ nx ][ny];   
@@ -16,7 +16,6 @@ class Maze{
             return maze_wallsY[ nx ][ny];   
         }
         void generateMaze(int startX, int startY);
-        void save_walls_txt_for_dbg();
         void init();
         struct exit {
             int pos_x = EXIT_POS_X;
@@ -33,7 +32,6 @@ class Player{
         int pos_X = START_POS_X;
         int pos_Y = START_POS_Y;
         void move_player(Controller::action act, Maze *pmaze);
-        
         };
 
 class MAZE_GAME{
@@ -41,6 +39,7 @@ public:
     void InitGame();
     Maze maze1;
     Player player1;
+    uint32_t start_time=0;
 private:
 
 };
