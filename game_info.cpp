@@ -1,3 +1,5 @@
+#include <avr/sleep.h>
+#include "Arduboy2Core.h"
 #include "game_info.h"
 #include "Controller.h"
 
@@ -26,7 +28,7 @@ void GameClass::action(){
           if (pt_joystick->exec() == Controller::action::PRESS_A){
               state = gamestate::CONTROLLER_STAGE;
               pt_viewer->update();
-          }else{
+          } else{
               state = gamestate::INTRO_STAGE;
               pt_viewer->update();
           }
@@ -42,17 +44,23 @@ void GameClass::action(){
         }
         break;
         case gamestate::GAME_STAGE:
-        {   
-            
+        {    
             state = gamestate::GAME_STAGE;
             gamemodel.player1.move_player(pt_joystick->exec(), &gamemodel.maze1);
+            if (gamemodel.player1.pos_X == gamemodel.maze1.exitpoint.pos_x && gamemodel.player1.pos_Y == gamemodel.maze1.exitpoint.pos_y)
+                if(Controller::action::PRESS_A == pt_joystick->exec()) state = gamestate::END_STAGE;
+            
             pt_viewer->update();
+            
         }
         break;
         case gamestate::END_STAGE:
-        {
-            
+        { 
             pt_viewer->update();
+            if (Controller::action::PRESS_B == pt_joystick->exec()) {
+                 gamemodel.InitGame();  
+                state = gamestate::GAME_STAGE;
+            }
         }
         break;
     }

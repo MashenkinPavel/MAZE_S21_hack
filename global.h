@@ -7,7 +7,8 @@
 #define MAX_LEVELCOUNT 2
 #define START_POS_X 0
 #define START_POS_Y 0
-
+#define EXIT_POS_X (COLCOUNT - 1)
+#define EXIT_POS_Y (ROWCOUNT - 1)
 
 
 void waitForButtonPress();

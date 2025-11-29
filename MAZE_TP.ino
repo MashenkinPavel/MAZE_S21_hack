@@ -22,6 +22,7 @@ void setup() {
     monitor.init(&game);
     game.addViewer(&monitor);
     
+    
 
     //arduboy.print("setup done\n");
     //arduboy.display();
@@ -46,8 +47,3 @@ void loop() {
    
 }
 
- //arduboy.drawRect(0, 0, 128, 64, WHITE);
- //arduboy.drawRect(0, 0, X_SIZE, Y_SIZE, WHITE);
- //create_maze(COLCOUNT, ROWCOUNT);
- //draw_maze();
- //game.draw();

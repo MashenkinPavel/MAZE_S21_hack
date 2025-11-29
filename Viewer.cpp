@@ -1,3 +1,4 @@
+#include "USBCore.h"
 #include <Arduboy2.h>
 #include "Viewer.h"
 #include "game_info.h"
@@ -6,6 +7,7 @@
 #include "instruction_screen.h"
 #include "simple_gameover.h"
 #include "player.h"
+#include "endpoint.h"
 
 
 extern Arduboy2 arduboy;
@@ -69,6 +71,8 @@ void Viewer::ViewControlsScreen() {
 
 
 void Viewer::ViewMaze() {
+  // Draw exitpoint
+  Sprites::drawOverwrite((X_SIZE * pt_game->get_game_model()->maze1.exitpoint.pos_x),(Y_SIZE * pt_game->get_game_model()->maze1.exitpoint.pos_y), endpoint_bitmap, 0);
   //Xface oriented draw   вертикальные
   for (int xFace = 0; xFace <= COLCOUNT; xFace++) {
     for (int row = 0; row < ROWCOUNT; row++) {
@@ -99,5 +103,5 @@ void Viewer::ViewMaze() {
 }
 
 void Viewer::ViewGameOver() {
-  Sprites::drawOverwrite(0, 0, zastavka_bitmap, 0);
+  Sprites::drawOverwrite(0, 0, simple_gameover_bitmap, 0);
 }

@@ -72,7 +72,8 @@ void Maze::generateMaze(int startX, int startY) {
       // Возвращаем текущую клетку в стек
       localstack.push(current);
       // Выбираем случайное направление
-      int dir = availableDirs[rand() % count];
+      int dir = availableDirs[random(110) % count];
+      
       int nx = current.x + direction_x[dir];
       int ny = current.y + direction_y[dir];
 
@@ -112,4 +113,6 @@ void MAZE_GAME::InitGame() {
   //init maze1
   maze1.init();
   maze1.generateMaze(0, 0);
+  player1.pos_X = START_POS_X;
+  player1.pos_Y = START_POS_Y;
 }
