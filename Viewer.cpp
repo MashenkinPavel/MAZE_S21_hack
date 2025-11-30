@@ -83,7 +83,7 @@ void Viewer::ViewControlsScreen() {
 
 void Viewer::ViewMaze() {
   // Draw Maze Exitpoint
-  Sprites::drawSelfMasked((X_SIZE * pt_game->get_game_model()->maze1.exitpoint.pos_x),(Y_SIZE * pt_game->get_game_model()->maze1.exitpoint.pos_y), endpoint_bitmap, 0);
+  Sprites::drawSelfMasked((X_SIZE * pt_game->get_game_model()->maze1->exitpoint.pos_x),(Y_SIZE * pt_game->get_game_model()->maze1->exitpoint.pos_y), endpoint_bitmap, 0);
   //Xface oriented draw   вертикальные
   for (int xFace = 0; xFace <= COLCOUNT; xFace++) {
     for (int row = 0; row < ROWCOUNT; row++) {
