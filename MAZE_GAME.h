@@ -33,7 +33,7 @@ class Player{
         int floor = 0;
         int pos_X = START_POS_X;
         int pos_Y = START_POS_Y;
-        void move_player(Controller::action act, Maze *pmaze);
+        bool move_player(Controller::action act, Maze *pmaze);
         void changefloor(int newfloor, MAZE_GAME* pMAZE_GAME);
 };
 

@@ -30,25 +30,31 @@ void Maze::init() {
   }
 }
 
-void Player::move_player(Controller::action act, Maze *pmaze) {
+bool Player::move_player(Controller::action act, Maze *pmaze) {
+  bool isMove = false;
   switch (act) {
       case Controller::action::PRESS_UP:
         if (!pmaze->IsWallY(pos_X, pos_Y) && pos_Y > 0)
           --pos_Y;
+          isMove = 1;
         break;
       case Controller::action::PRESS_DOWN:
         if (!pmaze->IsWallY(pos_X, pos_Y + 1) && pos_Y < (ROWCOUNT - 1))
           ++pos_Y;
+        isMove = 1;
         break;
       case Controller::action::PRESS_RIGHT:
         if (!pmaze->IsWallX(pos_X + 1, pos_Y) && pos_X < (COLCOUNT - 1))
           ++pos_X;
+        isMove = 1;
         break;
       case Controller::action::PRESS_LEFT:
         if (!pmaze->IsWallX(pos_X, pos_Y) && pos_X > 0)
           --pos_X;
+        isMove = 1;
         break;
     }
+    return isMove;
 }
 
 
