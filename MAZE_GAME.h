@@ -39,7 +39,6 @@ public:
     void InitGame();
     Maze maze1;
     Player player1;
-    uint32_t start_time=0;
 private:
 
 };

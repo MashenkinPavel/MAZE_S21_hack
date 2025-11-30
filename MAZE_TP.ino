@@ -11,6 +11,7 @@ GameClass game;
 Controller joystick;
 Viewer monitor;
 SoundManager audioFX;
+long unsigned int startTime;
 
 
 //int loopstep = 0;
@@ -18,6 +19,7 @@ void create_maze(int cols, int rows);
 
 void setup() {
     arduboy.begin();
+    startTime = millis();     // milliseconds at start
     arduboy.setFrameRate(60);
     arduboy.clear(); // Очистка экрана
     joystick.init();

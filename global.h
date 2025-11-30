@@ -9,7 +9,8 @@
 #define START_POS_Y 0
 #define EXIT_POS_X (COLCOUNT - 1)
 #define EXIT_POS_Y (ROWCOUNT - 1)
-
+#define TIMER_POS_X 110
+#define TIMER_POS_Y 0 
 
 void waitForButtonPress();
 

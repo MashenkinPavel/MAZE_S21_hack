@@ -112,9 +112,7 @@ void Maze::generateMaze(int startX, int startY) {
 }
 
 void MAZE_GAME::InitGame() {
-  //init maze1
-  // start timer
-  start_time = millis();
+ 
   maze1.init();
   maze1.generateMaze(0, 0);
   player1.pos_X = START_POS_X;
